@@ -8,9 +8,11 @@
     @vite('resources/js/app.js')
 </head>
 <body>
-    <h1>sani welcossme</h1>
+    <header>
+        <h1>Welcome to the Student Management System</h1>
+    </header>
 
-    <a href="/testpage">Go to Test</a>
+    <a href="{{ url('/dummy') }}">Go to Test</a>
 
     <form action="{{ route('formsubmit') }}" method="POST">
         @csrf

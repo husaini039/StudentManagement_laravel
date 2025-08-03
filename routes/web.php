@@ -12,6 +12,10 @@ Route::get('/testpage', function () {
     return "i swear this is a test page";
 });
 
+Route::get('/dummy', function () {
+    return view('dummy');
+});
+
 //post route example
 Route::post('/formsubmit', function (Request $request) {
 //validate the data input
@@ -21,4 +25,5 @@ $request->validate([
 
     $name = $request->input('name');
     return "name is $name";
+
 })->name('formsubmit');
