@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Dummy Page</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>All Students</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="p-6 bg-gray-100 text-gray-800 font-sans">
+<body class="container py-5">
 
-    <h1 class="text-3xl font-bold mb-4">Welcome to Student Management System</h1>
-    <p>This is a dummy page using Laravel + Vite setup.</p>
+    <h1 class="mb-4">All Students</h1>
 
-    <a href="/" class="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-        Back to Home
-    </a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Program</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Part</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($students as $student)
+                <tr>
+                    <td>{{ $student->id }}</td>
+                    <td>{{ $student->student_id }}</td>
+                    <td>{{ $student->name }}</td>
+                    <td>{{ $student->date_of_birth }}</td>
+                    <td>{{ $student->program }}</td>
+                    <td>{{ $student->phone_number }}</td>
+                    <td>{{ $student->email }}</td>
+                    <td>{{ $student->part }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
 </body>
 </html>

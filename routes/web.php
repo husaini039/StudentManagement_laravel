@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\StudentsController;
 
 Route::get('/', function () {
     return view('index');
@@ -15,6 +16,8 @@ Route::get('/testpage', function () {
 Route::get('/dummy', function () {
     return view('dummy');
 });
+
+Route::get('/dummy', [StudentsController::class, 'displayAllStudent']);
 
 //post route example
 Route::post('/formsubmit', function (Request $request) {
