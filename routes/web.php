@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\ExamMarksController;
 
 Route::get('/', function () {
     return view('index');
@@ -30,9 +31,17 @@ Route::delete('/course/{id}', [CoursesController::class, 'deleteCourse'])->name(
 Route::get('/course/{id}/edit', [CoursesController::class, 'editCourse'])->name('courses.edit');
 Route::put('/course/{id}', [CoursesController::class, 'updateCourse'])->name('courses.update');
 
-Route::get('/exam_mark', function () {
-    return view('exam_mark');
-});
+
+//exam marks routes
+Route::get('/exam_mark', [ExamMarksController::class, 'displayAllExamMarks'])->name('exam_mark.index');
+Route::get('/exam_mark/add', [ExamMarksController::class, 'create'])->name('exam_mark.add');
+Route::post('/exam_mark', [ExamMarksController::class, 'storeExamMark'])->name('exam_mark.store');
+Route::delete('/exam_mark/{id}', [ExamMarksController::class, 'deleteExamMark'])->name('exam_mark.delete');
+Route::get('/exam_mark/{id}/edit', [ExamMarksController::class, 'editExamMark'])->name('exam_mark.edit');
+Route::put('/exam_mark/{id}', [ExamMarksController::class, 'updateExamMark'])->name('exam_mark.update');
+
+
+
 Route::get('/index', function () {
     return view('index');
 });
