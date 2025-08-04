@@ -17,11 +17,11 @@ Route::get('/dummy', function () {
     return view('dummy');
 });
 
-Route::get('/student', [StudentsController::class, 'displayAllStudent']);
+Route::get('/student', [StudentsController::class, 'displayAllStudent'])->name('students.index');
+Route::delete('/student/{id}', [StudentsController::class, 'deleteStudent'])->name('students.delete');
+Route::get('/student/{id}/edit', [StudentsController::class, 'editStudent'])->name('students.edit');
+Route::put('/student/{id}', [StudentsController::class, 'updateStudent'])->name('students.update');
 
-Route::get('/student', function () {
-    return view('student');
-});
 Route::get('/exam_mark', function () {
     return view('exam_mark');
 });
