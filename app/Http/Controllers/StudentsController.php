@@ -41,6 +41,12 @@ class StudentsController extends Controller
         $student = Student::findOrFail($id);
         return view('student.edit', compact('student'));
     }
+
+    //show add form
+    public function create()
+    {
+        return view('student.add'); 
+    }
     
     // Update student
     public function updateStudent(Request $request, $id)
@@ -59,5 +65,22 @@ class StudentsController extends Controller
         $student->update($request->all());
         
         return redirect()->route('students.index')->with('success', 'Student updated successfully!');
+    }
+
+    //add student
+    public function addStudent(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'student_id' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone_number' => 'required|string|max:20',
+            'date_of_birth' => 'required|date',
+            'program' => 'required|string|max:255',
+            'part' => 'required|integer|min:1|max:6',
+        ]);
+
+        Student::create($request->all());
+
+        return redirect()->route('students.index')->with('success', 'Student added successfully!');
     }
 }

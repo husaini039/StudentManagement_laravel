@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Student - Student Management System</title>
+    <title>Add Student - Student Management System</title>
     @vite('resources/css/student.css')
 </head>
 <body>
@@ -51,26 +51,23 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="main-header">
-            <h1>Edit Student</h1>
-            <p>Update student information</p>
+            <h1>Add a Student</h1>
+            <p>Add student information</p>
         </div>
 
         <div class="content">
             <div class="form-section">
                 <div class="form-header">
-                    <h3 class="form-title">Edit Student Information</h3>
-                    <p class="form-subtitle">Update the student's details below</p>
+                    <h3 class="form-title">Add Student Information</h3>
+                    <p class="form-subtitle">Add student's details below</p>
                 </div>
 
-                <form method="POST" action="{{ route('students.update', $student->id) }}" class="edit-form">
+                <form method="POST" action="{{ route('students.store') }}" class="edit-form">
                     @csrf
-                    @method('PUT')
-                    
                     <div class="form-row">
-
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text"name="name" value="{{ $student->name }}" required>
+                            <input type="text"  name="name" value="{{ old('name') }}" required>
                             @error('name')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
@@ -78,7 +75,7 @@
                         
                         <div class="form-group">
                             <label for="student_id">Student ID</label>
-                            <input type="text" name="student_id" value="{{ $student->student_id }}" required>
+                            <input type="text"  name="student_id" value="{{ old('student_id') }}" required>
                             @error('student_id')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
@@ -88,7 +85,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email"  name="email" value="{{ $student->email }}" required>
+                            <input type="email"  name="email" value="{{ old('email') }}" required>
                             @error('email')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
@@ -96,7 +93,7 @@
                         
                         <div class="form-group">
                             <label for="phone_number">Phone Number</label>
-                            <input type="text"  name="phone_number" value="{{ $student->phone_number }}" required>
+                            <input type="text"  name="phone_number" value="{{ old('phone_number') }}" required>
                             @error('phone_number')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
@@ -106,7 +103,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="date_of_birth">Date of Birth</label>
-                            <input type="date"  name="date_of_birth" value="{{ $student->date_of_birth }}" required>
+                            <input type="date"  name="date_of_birth" value="{{ old('date_of_birth') }}" required>
                             @error('date_of_birth')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
@@ -114,7 +111,7 @@
                         
                         <div class="form-group">
                             <label for="program">Program</label>
-                            <input type="text" name="program" value="{{ $student->program }}" required>
+                            <input type="text"  name="program" value="{{ old('program') }}" required>
                             @error('program')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
@@ -122,20 +119,21 @@
                     </div>
 
                     <div class="form-row">
-                         <div class="form-group">
-                             <label for="part">Part (1-6)</label>
-                             <input type="number"  name="part" value="{{ $student->part }}" min="1" max="6" required>
-                             @error('part')
-                                 <span class="error-message">{{ $message }}</span>
-                             @enderror
-                         </div>
-                     </div>
+                        <div class="form-group">
+                            <label for="part">Part (1-6)</label>
+                            <input type="number"  name="part" min="1" max="6" value="{{ old('part') }}" required>
+                            @error('part')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
 
                     <div class="form-actions">
                         <a href="{{ route('students.index') }}" class="btn btn-secondary">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Update Student</button>
+                        <button type="submit" class="btn btn-primary">Add Student</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

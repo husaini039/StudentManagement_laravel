@@ -17,10 +17,15 @@ Route::get('/dummy', function () {
     return view('dummy');
 });
 
-Route::get('/student', [StudentsController::class, 'displayAllStudent'])->name('students.index');
-Route::delete('/student/{id}', [StudentsController::class, 'deleteStudent'])->name('students.delete');
-Route::get('/student/{id}/edit', [StudentsController::class, 'editStudent'])->name('students.edit');
-Route::put('/student/{id}', [StudentsController::class, 'updateStudent'])->name('students.update');
+//student routes
+Route::get('/student', [StudentsController::class, 'displayAllStudent'])->name('students.index'); //this one that display the table
+Route::delete('/student/{id}', [StudentsController::class, 'deleteStudent'])->name('students.delete'); //delete  (use delete)
+Route::get('/student/{id}/edit', [StudentsController::class, 'editStudent'])->name('students.edit'); //edit 
+Route::put('/student/{id}', [StudentsController::class, 'updateStudent'])->name('students.update');  //update student
+
+Route::get('/student/add', [StudentsController::class, 'create'])->name('students.add');
+Route::post('/student', [StudentsController::class, 'addStudent'])->name('students.store'); //add student
+
 
 Route::get('/exam_mark', function () {
     return view('exam_mark');

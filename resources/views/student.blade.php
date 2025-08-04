@@ -7,7 +7,7 @@
     @vite('resources/css/student.css')
 </head>
 <body>
-    <!-- Sidebar -->
+    <!-- sidebar using svg -->
    <div class="sidebar">
         <div class="user-profile">
             <div class="user-avatar">A</div>
@@ -49,7 +49,7 @@
         </nav>
     </div>
 
-    <!-- Main Content -->
+    <!-- main content -->
     <div class="main-content">
         <div class="main-header">
             <h1>Student List</h1>
@@ -60,9 +60,9 @@
             <div class="table-section">
                 <div class="table-header">
                     <h3 class="table-title">Student Records</h3>
-                    <p class="table-subtitle">Manage and view all registered students</p>
-                    
-                                         <div class="search-container">
+                    <p class="table-subtitle">Manage and view all registered students</p>   
+                      <!-- the search content -->     
+                        <div class="search-container"> 
                          <form method="GET" action="{{ route('students.index') }}" class="search-form">
                              <div class="search-box">
                                  <svg class="search-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -81,9 +81,11 @@
                                  <a href="{{ route('students.index') }}" class="clear-search">Clear</a>
                              @endif
                          </form>
+                         <a href="{{ route('students.add') }}" class="search-btn">Add</a>
                      </div>
                 </div>
 
+                  <!-- mtable stuff-->
                 <div class="table-container">
                     <table class="data-table">
                         <thead>
@@ -110,15 +112,15 @@
                                 <td>{{ $student->phone_number }}</td>
                                 <td>{{ $student->email }}</td>
                                 <td>{{ $student->part }}</td>
-                                                                         <td>
-                                         <div class="action-buttons">
+                                <td>
+                                    <div class="action-buttons">
                                              <a href="{{ route('students.edit', $student->id) }}" class="btn btn-edit">
                                                  <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                                                      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
                                                  </svg>
                                                  Edit
                                              </a>
-                                             <form method="POST" action="{{ route('students.delete', $student->id) }}" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this student?')">
+                                             <form method="POST" action="{{ route('students.delete', $student->id) }}" style="display: inline;" onsubmit="return confirm('Removing a student, are you sure?')">
                                                  @csrf
                                                  @method('DELETE')
                                                  <button type="submit" class="btn btn-delete">
@@ -128,18 +130,18 @@
                                                      Delete
                                                  </button>
                                              </form>
-                                         </div>
-                                     </td>
+                                    </div>
+                                </td>
                             </tr>
                              @endforeach
                         </tbody>
                     </table>
                 </div>
 
-                                 <!-- Pagination -->
-                 <div class="pagination">
+                <!-- paginate the page 10 only -->
+                <div class="pagination">
                      {{ $students->links('vendor.pagination.simple') }}
-                 </div>
+                </div>
             </div>
         </div>
     </div>
