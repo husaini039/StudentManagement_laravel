@@ -17,7 +17,23 @@ Route::get('/dummy', function () {
     return view('dummy');
 });
 
-Route::get('/dummy', [StudentsController::class, 'displayAllStudent']);
+Route::get('/student', [StudentsController::class, 'displayAllStudent']);
+
+Route::get('/student', function () {
+    return view('student');
+});
+Route::get('/exam_mark', function () {
+    return view('exam_mark');
+});
+Route::get('/index', function () {
+    return view('index');
+});
+Route::get('/course', function () {
+    return view('course');
+});
+
+
+
 
 //post route example
 Route::post('/formsubmit', function (Request $request) {
