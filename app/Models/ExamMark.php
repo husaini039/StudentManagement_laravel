@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExamMark extends Model
 {
-    protected $table = 'exam_marks'; // Specify the table name if it differs from the default
+    protected $table = 'exam_marks'; // this specifies the table name
     
     // this one responsible for mass assignment (can update or add inside the database)
     protected $fillable = [
@@ -16,7 +16,7 @@ class ExamMark extends Model
         'grade',
     ];
     
-    // Define relationships if necessary
+    // relatiopn define
     public function student()
     {
         return $this->belongsTo(Student::class);

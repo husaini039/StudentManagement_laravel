@@ -12,7 +12,7 @@ body {
     display: flex;
 }
 
-/* Sidebar Styles */
+/* the sidebar style */
 .sidebar {
     width: 240px;
     background-color: #1a1a18;
@@ -106,7 +106,7 @@ body {
     padding: 0 40px 40px 40px;
 }
 
-/* Enhanced Table Section */
+/* table styling  */
 .table-section {
     background-color: white;
     border-radius: 16px;
@@ -160,7 +160,7 @@ body {
     background-color: #c56a2d;
 }
 
-/* Enhanced Table Styles */
+/* more bootiful table styles */
 .table-container {
     overflow-x: auto;
 }
@@ -219,7 +219,8 @@ body {
     color: #d67e3b;
 }
 
-/* Average mark styling */
+/* the average mark styling */
+/* every grade has it own colors */
 .average-mark {
     font-weight: 600;
     color: #059669;

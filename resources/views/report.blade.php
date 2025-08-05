@@ -78,7 +78,7 @@
                                 <th>Student Name</th>
                                 <th>Total Subjects</th>
                                 <th>Average Mark</th>
-                                <th>Grade</th>
+                                <th>Average Grade</th>
                             </tr>
                         </thead>
                         <tbody>
