@@ -29,6 +29,7 @@ Route::get('/course/add', [CoursesController::class, 'create'])->name('courses.a
 Route::post('/course', [CoursesController::class, 'storeCourse'])->name('courses.store');
 Route::delete('/course/{id}', [CoursesController::class, 'deleteCourse'])->name('courses.delete');
 Route::get('/course/{id}/edit', [CoursesController::class, 'editCourse'])->name('courses.edit');
+
 Route::put('/course/{id}', [CoursesController::class, 'updateCourse'])->name('courses.update');
 
 
