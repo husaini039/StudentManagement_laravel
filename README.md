@@ -27,11 +27,13 @@ The reporting module offers the following functionalities:
 - Laravel (PHP Framework)
 - Blade
 - MySQL
-- HTML/CSS 
+- HTML/CSS
+- PHPMyAdmin Database
 
 
 ---
 Feel free to modify or add project screenshots, setup steps, or contributor info if you plan to expand the repository.
+---
 
 - Dashboard
 <img src="https://github.com/user-attachments/assets/370b122f-8154-4ebb-b01b-0aa4dda49b7f" width="800" alt="Dashboard Screenshot">
@@ -47,3 +49,10 @@ Feel free to modify or add project screenshots, setup steps, or contributor info
 
 - Reports Module
 <img src="https://github.com/user-attachments/assets/31586b7c-bb60-4299-abbc-37f059777373" width="800" alt="Reports Screenshot" />
+
+The Add and Edit
+add course
+<img width="931" height="603" alt="image" src="https://github.com/user-attachments/assets/50411c4c-ccea-4135-bd07-7f0863888e07" />
+edit course
+<img width="868" height="648" alt="image" src="https://github.com/user-attachments/assets/6a9092aa-1506-4c60-a722-ae6c58e97590" />
+
