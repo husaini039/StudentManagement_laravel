@@ -25,16 +25,10 @@ The reporting module offers the following functionalities:
 
 ## Technologies Used
 - Laravel (PHP Framework)
-- Blade Templates
+- Blade
 - MySQL
-- HTML/CSS (custom styling)
+- HTML/CSS 
 
-## 🛠 Setup Instructions
-1. Clone this repository
-2. Run `composer install`
-3. Set up your `.env` file and configure the database
-4. Run migrations: `php artisan migrate`
-5. Start the server: `php artisan serve`
 
 ---
 Feel free to modify or add project screenshots, setup steps, or contributor info if you plan to expand the repository.
