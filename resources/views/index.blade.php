@@ -67,7 +67,7 @@
                         </svg>
                     </div>
                     <div class="stat-title">Students</div>
-                    <div class="stat-number">1,247</div>
+                    <div class="stat-number">{{ number_format($totalStudents) }}</div>
                     <div class="stat-label">↗ Active</div>
                 </div>
                 
@@ -78,7 +78,7 @@
                         </svg>
                     </div>
                     <div class="stat-title">Courses</div>
-                    <div class="stat-number">89</div>
+                    <div class="stat-number">{{ number_format($totalCourses) }}</div>
                     <div class="stat-label">↗ Running</div>
                 </div>
                 
@@ -89,10 +89,48 @@
                         </svg>
                     </div>
                     <div class="stat-title">Exams</div>
-                    <div class="stat-number">156</div>
+                    <div class="stat-number">{{ number_format($totalExams) }}</div>
                     <div class="stat-label">↗ Completed</div>
                 </div>
             </div>
+
+            <!-- Performance Statistics -->
+            @if($totalExams > 0)
+            <div class="stats-grid" style="margin-top: 20px;">
+                <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-title">Average Mark</div>
+                    <div class="stat-number">{{ number_format($averageMark, 1) }}</div>
+                    <div class="stat-label">Overall Performance</div>
+                </div>
+                
+                <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-title">Highest Mark</div>
+                    <div class="stat-number">{{ $highestMark }}</div>
+                    <div class="stat-label">Best Performance</div>
+                </div>
+                
+                <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-title">Lowest Mark</div>
+                    <div class="stat-number">{{ $lowestMark }}</div>
+                    <div class="stat-label">Needs Improvement</div>
+                </div>
+            </div>
+            @endif
 
             <!-- Table Section -->
             <div class="table-section">
@@ -106,81 +144,111 @@
                 </div>
                 
                 <table class="data-table">
-                    <thead>
+                    <thead id="table-headers">
                         <tr>
                             <th>Student ID</th>
                             <th>Student Name</th>
                             <th>Course</th>
                             <th>Grade</th>
-                            <th>Status</th>
+                            <th>Mark</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>STU001</td>
-                            <td>Ahmad bin Abdullah</td>
-                            <td>Computer Science</td>
-                            <td>A</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>STU002</td>
-                            <td>Siti Nurhaliza</td>
-                            <td>Information Technology</td>
-                            <td>A-</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>STU003</td>
-                            <td>Muhammad Ali</td>
-                            <td>Software Engineering</td>
-                            <td>B+</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>STU004</td>
-                            <td>Fatimah binti Hassan</td>
-                            <td>Data Science</td>
-                            <td>A</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>STU005</td>
-                            <td>Omar bin Yusuf</td>
-                            <td>Cybersecurity</td>
-                            <td>B</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>STU006</td>
-                            <td>Aishah binti Rahman</td>
-                            <td>Web Development</td>
-                            <td>A-</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>STU007</td>
-                            <td>Hassan bin Ibrahim</td>
-                            <td>Mobile Development</td>
-                            <td>B+</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>STU008</td>
-                            <td>Zainab binti Ahmad</td>
-                            <td>Database Management</td>
-                            <td>A</td>
-                            <td>Active</td>
-                        </tr>
+                        @forelse($topStudents as $student)
+                            <tr>
+                                <td>{{ $student->student_code }}</td>
+                                <td>{{ $student->student_name }}</td>
+                                <td>{{ $student->course_name }}</td>
+                                <td class="grade-{{ strtolower($student->grade) }}">{{ $student->grade }}</td>
+                                <td class="average-mark">{{ $student->mark }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-center">No exam results available</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
                 
-                <div class="pagination">
-                    <span>1-8 of 1,247 items</span>
-                    <span>Items per page: 10</span>
-                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.table-tab');
+            const tableBody = document.querySelector('.data-table tbody');
+            
+            // Top Students data (default view)
+            const topStudentsData = @json($topStudents);
+            
+            // Recent Enrollments data
+            const recentEnrollmentsData = @json($recentEnrollments);
+            
+            // Recent Exam Results data
+            const recentExamResultsData = @json($recentExamResults);
+            
+            function updateTable(data, columns, headers) {
+                // Update table headers
+                const headerRow = document.querySelector('#table-headers tr');
+                headerRow.innerHTML = '';
+                headers.forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    headerRow.appendChild(th);
+                });
+                
+                // Update table body
+                tableBody.innerHTML = '';
+                
+                if (data.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No data available</td></tr>';
+                    return;
+                }
+                
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    columns.forEach(column => {
+                        const cell = document.createElement('td');
+                        if (column === 'grade' && item[column]) {
+                            cell.className = `grade-${item[column].toLowerCase()}`;
+                        }
+                        if (column === 'mark' || column === 'average_mark') {
+                            cell.className = 'average-mark';
+                        }
+                        cell.textContent = item[column] || '';
+                        row.appendChild(cell);
+                    });
+                    tableBody.appendChild(row);
+                });
+            }
+            
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Update table based on selected tab
+                    switch(index) {
+                        case 0: // Top Students
+                            updateTable(topStudentsData, ['student_code', 'student_name', 'course_name', 'grade', 'mark'], 
+                                     ['Student ID', 'Student Name', 'Course', 'Grade', 'Mark']);
+                            break;
+                                                 case 1: // Recent Enrollments
+                             updateTable(recentEnrollmentsData, ['student_id', 'name', 'program', 'part', 'id'], 
+                                      ['Student ID', 'Name', 'Program', 'Part', 'ID']);
+                             break;
+                        case 2: // Recent Exam Results
+                            updateTable(recentExamResultsData, ['student_code', 'student_name', 'course_name', 'grade', 'mark'], 
+                                     ['Student ID', 'Student Name', 'Course', 'Grade', 'Mark']);
+                            break;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

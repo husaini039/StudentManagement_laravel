@@ -6,13 +6,8 @@ use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ExamMarksController;
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/index', function () {
-    return view('index');
-});
+Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::get('/index', [App\Http\Controllers\DashboardController::class, 'index']);
 
 //student routes
 Route::get('/student', [StudentsController::class, 'displayAllStudent'])->name('students.index'); //display all student information table
@@ -41,6 +36,9 @@ Route::put('/exam_mark/{id}', [ExamMarksController::class, 'updateExamMark'])->n
 
 //report routing
 Route::get('/report', [App\Http\Controllers\ReportsController::class, 'index'])->name('report');
+Route::get('/report/export/student-averages', [App\Http\Controllers\ReportsController::class, 'exportStudentAverages'])->name('report.export.student-averages');
+Route::get('/report/export/subject-averages', [App\Http\Controllers\ReportsController::class, 'exportSubjectAverages'])->name('report.export.subject-averages');
+Route::get('/report/export/detailed-marks', [App\Http\Controllers\ReportsController::class, 'exportDetailedMarks'])->name('report.export.detailed-marks');
 
 
 

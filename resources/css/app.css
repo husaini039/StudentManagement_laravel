@@ -258,5 +258,40 @@
             
             .main-header {
                 padding: 20px;
-            }
+                    }
+
+        /* Grade styling */
+        .grade-a {
+            color: #059669;
+            font-weight: 600;
         }
+
+        .grade-b {
+            color: #d67e3b;
+            font-weight: 600;
+        }
+
+        .grade-c {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .grade-d {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .grade-f {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .average-mark {
+            font-weight: 600;
+            color: #059669;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    }

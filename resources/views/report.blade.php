@@ -180,7 +180,6 @@
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Student ID</th>
                                 <th>Student Name</th>
                                 <th>Subject</th>
                                 <th>Mark</th>
@@ -190,7 +189,6 @@
                         <tbody>
                             @forelse($studentMarks as $mark)
                                 <tr>
-                                    <td>{{ $mark->student_id }}</td>
                                     <td>{{ $mark->student_name }}</td>
                                     <td>{{ $mark->course_name }}</td>
                                     <td>{{ $mark->mark }}</td>
@@ -215,21 +213,33 @@
 
     <script>
         function exportStudentAverages() {
-            // Placeholder function for CSV export
-            alert('Student Average Marks CSV export functionality would be implemented here.');
-            // In a real application, this would generate and download a CSV file
+            // Create a temporary link element to trigger the download
+            const link = document.createElement('a');
+            link.href = '{{ route("report.export.student-averages") }}';
+            link.download = 'student_averages.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function exportSubjectAverages() {
-            // Placeholder function for CSV export
-            alert('Subject Average Marks CSV export functionality would be implemented here.');
-            // In a real application, this would generate and download a CSV file
+            // Create a temporary link element to trigger the download
+            const link = document.createElement('a');
+            link.href = '{{ route("report.export.subject-averages") }}';
+            link.download = 'subject_averages.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function exportDetailedMarks() {
-            // Placeholder function for CSV export
-            alert('Detailed Student Marks CSV export functionality would be implemented here.');
-            // In a real application, this would generate and download a CSV file
+            // Create a temporary link element to trigger the download
+            const link = document.createElement('a');
+            link.href = '{{ route("report.export.detailed-marks") }}';
+            link.download = 'detailed_student_marks.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         // Calculate averages dynamically (for demonstration)
