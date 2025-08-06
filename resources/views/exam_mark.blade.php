@@ -93,8 +93,8 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Student ID</th>
-                                <th>Course ID</th>
+                                <th>Student</th>
+                                <th>Course</th>
                                 <th>Mark</th>
                                 <th>Grade</th>
                                 <th>Actions</th>
@@ -104,10 +104,22 @@
                             @foreach ($examMarks as $examMark)
                             <tr>
                                 <td>{{ $examMark->id }}</td>
-                                <td>{{ $examMark->student_id }}</td>
-                                <td>{{ $examMark->course_id }}</td>
-                                <td>{{ $examMark->mark }}</td>
-                                <td>{{ $examMark->grade }}</td>
+                                <td>
+                                    <div>
+                                        <strong>{{ $examMark->student->name ?? 'Unknown' }}</strong>
+                                        <br>
+                                        <small class="text-muted">ID: {{ $examMark->student_id }}</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <strong>{{ $examMark->course->course_name ?? 'Unknown' }}</strong>
+                                        <br>
+                                        <small class="text-muted">{{ $examMark->course->course_code ?? '' }}</small>
+                                    </div>
+                                </td>
+                                <td class="average-mark">{{ $examMark->mark }}</td>
+                                <td class="grade-{{ strtolower($examMark->grade) }}">{{ $examMark->grade }}</td>
                                 <td>
                                     <div class="action-buttons">
                                              <a href="{{ route('exam_mark.edit', $examMark->id) }}" class="btn btn-edit">

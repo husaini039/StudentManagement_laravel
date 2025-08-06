@@ -62,23 +62,23 @@
                     <p class="form-subtitle">Update the student's marks below</p>
                 </div>
 
-                <form method="POST" action="{{ route('exam_marks.update', $examMark->id) }}" class="edit-form">
+                <form method="POST" action="{{ route('exam_mark.update', $examMark->id) }}" class="edit-form">
                     @csrf
                     @method('PUT')
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="course_code">Course Code</label>
-                            <input type="text" name="course_code" value="{{ $course->course_code }}" required>
-                            @error('course_code')
+                            <label for="student_id">Student ID</label>
+                            <input type="text" name="student_id" value="{{ $examMark->student_id }}" required>
+                            @error('student_id')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
                         </div>
                         
                         <div class="form-group">
-                            <label for="course_name">Course Name</label>
-                            <input type="text" name="course_name" value="{{ $course->course_name }}" required>
-                            @error('course_name')
+                            <label for="course_id">Course ID</label>
+                            <input type="text" name="course_id" value="{{ $examMark->course_id }}" required>
+                            @error('course_id')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
                         </div>
@@ -86,22 +86,85 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="credit_hours">Credit Hours</label>
-                            <input type="number" name="credit_hours" value="{{ $course->credit_hours }}" required>
-                            @error('credit_hours')
+                            <label for="mark">Marks</label>
+                            <input type="number" name="mark" id="mark" value="{{ $examMark->mark }}" min="0" max="100" required>
+                            @error('mark')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
                         </div>
-                        
+
+                        <div class="form-group">
+                            <label for="grade">Grade</label>
+                            <input type="text" name="grade" id="grade" value="{{ $examMark->grade }}" readonly>
+                            @error('grade')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                        </div>
+                           
                     </div>
 
                     <div class="form-actions">
-                        <a href="{{ route('courses.index') }}" class="btn btn-secondary">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Update Course</button>
+                        <a href="{{ route('exam_mark.index') }}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Update Marks</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        // Auto-calculate grade based on mark
+        document.getElementById('mark').addEventListener('input', function() {
+            const mark = parseInt(this.value);
+            const gradeField = document.getElementById('grade');
+            
+            if (mark >= 0 && mark <= 100) {
+                let grade;
+                if (mark >= 90) {
+                    grade = 'A+';
+                } else if (mark >= 80) {
+                    grade = 'A';
+                } else if (mark >= 70) {
+                    grade = 'B';
+                } else if (mark >= 60) {
+                    grade = 'C';
+                } else if (mark >= 50) {
+                    grade = 'D';
+                } else {
+                    grade = 'F';
+                }
+                gradeField.value = grade;
+            } else {
+                gradeField.value = '';
+            }
+        });
+
+        // Initialize grade on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const markField = document.getElementById('mark');
+            const gradeField = document.getElementById('grade');
+            
+            if (markField.value) {
+                const mark = parseInt(markField.value);
+                if (mark >= 0 && mark <= 100) {
+                    let grade;
+                    if (mark >= 90) {
+                        grade = 'A+';
+                    } else if (mark >= 80) {
+                        grade = 'A';
+                    } else if (mark >= 70) {
+                        grade = 'B';
+                    } else if (mark >= 60) {
+                        grade = 'C';
+                    } else if (mark >= 50) {
+                        grade = 'D';
+                    } else {
+                        grade = 'F';
+                    }
+                    gradeField.value = grade;
+                }
+            }
+        });
+    </script>
 </body>
 </html> 

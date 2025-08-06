@@ -555,3 +555,8 @@ body {
     background-color: #f8f9fa;
     color: #495057;
 }
+
+.text-muted {
+    color: #6c757d;
+    font-size: 0.875em;
+}
