@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System - Reports</title>
     @vite('resources/css/report.css')
+    @vite('resources/js/report.js')
 </head>
 <body>
     <!-- sidebar using svg -->
@@ -210,48 +211,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function exportStudentAverages() {
-            // Create a temporary link element to trigger the download
-            const link = document.createElement('a');
-            link.href = '{{ route("report.export.student-averages") }}';
-            link.download = 'student_averages.csv';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function exportSubjectAverages() {
-            // Create a temporary link element to trigger the download
-            const link = document.createElement('a');
-            link.href = '{{ route("report.export.subject-averages") }}';
-            link.download = 'subject_averages.csv';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function exportDetailedMarks() {
-            // Create a temporary link element to trigger the download
-            const link = document.createElement('a');
-            link.href = '{{ route("report.export.detailed-marks") }}';
-            link.download = 'detailed_student_marks.csv';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        // Calculate averages dynamically (for demonstration)
-        function calculateAverages() {
-            // This would typically fetch data from a database and calculate averages
-            console.log('Averages calculated and displayed in tables');
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            calculateAverages();
-        });
-    </script>
 </body>
 </html>

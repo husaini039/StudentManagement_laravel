@@ -82,7 +82,7 @@
                              @endif
                          </form>
                          <a href="{{ route('students.add') }}" class="search-btn">Add</a>
-                     </div>
+                       </div>
                 </div>
 
                   <!-- mtable stuff-->

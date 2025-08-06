@@ -22,6 +22,7 @@ class ReportsController extends Controller
                 'students.student_id as student_code',
                 DB::raw('AVG(exam_marks.mark) as average_mark'),
                 DB::raw('COUNT(exam_marks.id) as total_subjects'),
+                //basically simple grading based value
                 DB::raw('CASE 
                     WHEN AVG(exam_marks.mark) >= 90 THEN "A+"
                     WHEN AVG(exam_marks.mark) >= 80 THEN "A"
@@ -42,16 +43,19 @@ class ReportsController extends Controller
             ->select(
                 'courses.course_code',
                 'courses.course_name',
+                 //on eachcount to find max min and and the average for marks 
                 DB::raw('COUNT(exam_marks.student_id) as total_students'),
                 DB::raw('MAX(exam_marks.mark) as highest_mark'),
                 DB::raw('MIN(exam_marks.mark) as lowest_mark'),
                 DB::raw('AVG(exam_marks.mark) as average_mark'),
+                //checks for exam mark perfomacance level that state in the table
                 DB::raw('CASE 
                     WHEN AVG(exam_marks.mark) >= 90 THEN "Excellent"
                     WHEN AVG(exam_marks.mark) >= 80 THEN "Good"
                     WHEN AVG(exam_marks.mark) >= 70 THEN "Average"
                     WHEN AVG(exam_marks.mark) >= 60 THEN "Below Average"
                     ELSE "Poor"
+                    
                 END as performance_level')
             )
             ->groupBy('courses.id', 'courses.course_code', 'courses.course_name')

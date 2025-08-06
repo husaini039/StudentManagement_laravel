@@ -73,7 +73,7 @@
                                      type="text" 
                                      name="search"
                                      class="search-input" 
-                                     placeholder="Search courses by code, name, or credit hours..."
+                                     placeholder="Search here..."
                                      value="{{ request('search') }}"
                                  >
                              </div>

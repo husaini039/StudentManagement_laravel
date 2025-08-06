@@ -8,7 +8,7 @@
     @vite('resources/js/app.js')
 </head>
 <body>
-    <!-- Sidebar -->
+    <!-- the sidebar -->
     <div class="sidebar">
         <div class="user-profile">
             <div class="user-avatar">A</div>
@@ -50,7 +50,7 @@
         </nav>
     </div>
 
-    <!-- Main Content -->
+    <!-- main content goes here -->
     <div class="main-content">
         <div class="main-header">
             <h1>Dashboard</h1>
@@ -58,7 +58,7 @@
         </div>
         
         <div class="content">
-            <!-- Stats Cards -->
+            <!-- this is where the 6 card of stats (stats card) -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon">
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <!-- Performance Statistics -->
+            <!-- the performance statistics -->
             @if($totalExams > 0)
             <div class="stats-grid" style="margin-top: 20px;">
                 <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
@@ -132,11 +132,12 @@
             </div>
             @endif
 
-            <!-- Table Section -->
+            <!-- table section goes here -->
             <div class="table-section">
                 <div class="table-header">
                     <h3 class="table-title">Recent Activities</h3>
                     <div class="table-tabs">
+                         <!-- 3 tab responsible (changing using js) -->
                         <button class="table-tab active">Top Students</button>
                         <button class="table-tab">Recent Enrollments</button>
                         <button class="table-tab">Exam Results</button>
@@ -175,18 +176,18 @@
     </div>
 
     <script>
-        // Tab functionality
+        // the tab function 
         document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.table-tab');
             const tableBody = document.querySelector('.data-table tbody');
             
-            // Top Students data (default view)
+            // the default view will always top students
             const topStudentsData = @json($topStudents);
             
-            // Recent Enrollments data
+            // the recent enroll stats
             const recentEnrollmentsData = @json($recentEnrollments);
             
-            // Recent Exam Results data
+            // exam result stats
             const recentExamResultsData = @json($recentExamResults);
             
             function updateTable(data, columns, headers) {
@@ -231,17 +232,17 @@
                     // Add active class to clicked tab
                     this.classList.add('active');
                     
-                    // Update table based on selected tab
+                    // when selected the table updated
                     switch(index) {
-                        case 0: // Top Students
+                        case 0: // for top students
                             updateTable(topStudentsData, ['student_code', 'student_name', 'course_name', 'grade', 'mark'], 
                                      ['Student ID', 'Student Name', 'Course', 'Grade', 'Mark']);
                             break;
-                                                 case 1: // Recent Enrollments
+                        case 1: // the recent ewnrollemn 
                              updateTable(recentEnrollmentsData, ['student_id', 'name', 'program', 'part', 'id'], 
                                       ['Student ID', 'Name', 'Program', 'Part', 'ID']);
                              break;
-                        case 2: // Recent Exam Results
+                        case 2: // recent exam result (basically desc order)
                             updateTable(recentExamResultsData, ['student_code', 'student_name', 'course_name', 'grade', 'mark'], 
                                      ['Student ID', 'Student Name', 'Course', 'Grade', 'Mark']);
                             break;
