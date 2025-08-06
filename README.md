@@ -42,7 +42,7 @@ Feel free to modify or add project screenshots, setup steps, or contributor info
 - Dashboard
 <img src="https://github.com/user-attachments/assets/370b122f-8154-4ebb-b01b-0aa4dda49b7f" width="800" alt="Dashboard Screenshot">
 
-- Student List
+- Exam mark module 
 <img src="https://github.com/user-attachments/assets/106a3e32-0511-4539-9bae-9cf16f1cc4ad" width="800" alt="Student List Screenshot">
 
 - Add Student Form
