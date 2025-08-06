@@ -36,11 +36,14 @@ Feel free to modify or add project screenshots, setup steps, or contributor info
 - Dashboard
 <img src="https://github.com/user-attachments/assets/370b122f-8154-4ebb-b01b-0aa4dda49b7f" width="800" alt="Dashboard Screenshot">
 
-- Exam mark module 
-<img src="https://github.com/user-attachments/assets/106a3e32-0511-4539-9bae-9cf16f1cc4ad" width="800" alt="Student List Screenshot">
-
 - Add Student Form
-<img src="https://github.com/user-attachments/assets/9c8292ba-459a-49f4-ab1c-3aedb238ca28" width="800" alt="Add Student Screenshot">
+<img src="https://github.com/user-attachments/assets/9c8292ba-459a-49f4-ab1c-3aedb238ca28" width="800" alt="Add Student Screenshot" />
+
+- Course Module
+<img width="1880" height="947" alt="image" src="https://github.com/user-attachments/assets/3cbcb8ea-9ef0-4465-bfd5-88a6918a1448" />
+
+- Exam mark module 
+<img src="https://github.com/user-attachments/assets/106a3e32-0511-4539-9bae-9cf16f1cc4ad" width="800" alt="Student List Screenshot" />
 
 - Reports Module
-<img src="https://github.com/user-attachments/assets/31586b7c-bb60-4299-abbc-37f059777373" width="800" alt="Reports Screenshot">
+<img src="https://github.com/user-attachments/assets/31586b7c-bb60-4299-abbc-37f059777373" width="800" alt="Reports Screenshot" />
